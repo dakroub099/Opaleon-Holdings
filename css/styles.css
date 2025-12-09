@@ -1,5 +1,8 @@
 /* === CSS VARIABLES === */
 :root {
+    /* Unified Background Gradient */
+    --opaleon-bg: radial-gradient(ellipse 1400px 900px at 50% 0%, #11203d 0%, #09101f 40%, #070c17 100%);
+    
     /* Deep Navy & Gold Base */
     --ink: #0a0f1f;
     --ink-light: #0d1326;
@@ -53,9 +56,10 @@ html {
 }
 
 body {
+    margin: 0;
     font-family: var(--font-sans);
     color: var(--text-primary);
-    background: radial-gradient(ellipse 1400px 900px at 50% 0%, #11203d 0%, #09101f 40%, #070c17 100%);
+    background: var(--opaleon-bg);
     background-attachment: fixed;
     overflow-x: hidden;
     line-height: 1.6;
@@ -120,26 +124,18 @@ body {
     text-decoration: none;
 }
 
-.opal-gem-nav {
-    width: 36px;
-    height: 36px;
-    background: conic-gradient(from 0deg, var(--opal-blue), var(--opal-teal), var(--opal-cyan), var(--opal-orange), var(--opal-blue));
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
-    animation: gemRotate 15s linear infinite;
+.nav-logo {
+    height: 45px;
+    width: auto;
+    filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3)) contrast(1.1) saturate(1.2);
+    transition: all 0.3s var(--ease-out);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
-@keyframes gemRotate {
-    to { transform: rotate(360deg); }
-}
-
-.brand-text {
-    font-family: var(--font-serif);
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    color: var(--gold-light);
-    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+.nav-brand:hover .nav-logo {
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.5)) contrast(1.15) saturate(1.3);
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -185,6 +181,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 120px 20px 100px;
+    margin: 0;
+    background: var(--opaleon-bg);
 }
 
 .hero-background {
@@ -192,6 +190,8 @@ body {
     inset: 0;
     z-index: 1;
     overflow: hidden;
+    background: transparent;
+    display: none;
 }
 
 .opal-shimmer {
@@ -209,66 +209,51 @@ body {
     max-width: 1000px;
 }
 
-.hero-gem-wrapper {
-    margin-bottom: 40px;
-    perspective: 1000px;
+.hero-logo-wrapper {
+    margin: 0 auto 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    animation: logoFadeIn 1s ease-out;
 }
 
-.hero-opal {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    position: relative;
-    transform-style: preserve-3d;
-    will-change: transform;
-    animation: opalFloat 8s ease-in-out infinite;
+@keyframes logoFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes opalFloat {
-    0%, 100% { transform: rotateX(15deg) rotateY(0deg); }
-    50% { transform: rotateX(15deg) rotateY(180deg); }
-}
-
-.facet {
-    position: absolute;
+.hero-logo {
+    display: block;
+    max-width: 500px;
     width: 100%;
-    height: 100%;
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-    background: linear-gradient(135deg, 
-        rgba(15, 76, 129, 0.2),
-        rgba(27, 153, 139, 0.2),
-        rgba(212, 175, 55, 0.1)
-    );
-    border: 1px solid var(--gold-dim);
-    will-change: transform;
+    height: auto;
+    filter: drop-shadow(0 10px 40px rgba(212, 175, 55, 0.3)) contrast(1.1) saturate(1.2);
+    animation: logoGlow 3s ease-in-out infinite;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    mix-blend-mode: lighten;
+    background: transparent;
 }
 
-.facet:nth-child(1) { transform: rotateY(0deg) translateZ(30px); }
-.facet:nth-child(2) { transform: rotateY(45deg) translateZ(30px); }
-.facet:nth-child(3) { transform: rotateY(90deg) translateZ(30px); }
-.facet:nth-child(4) { transform: rotateY(135deg) translateZ(30px); }
-.facet:nth-child(5) { transform: rotateY(180deg) translateZ(30px); }
-.facet:nth-child(6) { transform: rotateY(225deg) translateZ(30px); }
-.facet:nth-child(7) { transform: rotateY(270deg) translateZ(30px); }
-.facet:nth-child(8) { transform: rotateY(315deg) translateZ(30px); }
-
-.hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(48px, 8vw, 96px);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.5px;
-    margin-bottom: 16px;
-    background: linear-gradient(92deg, var(--gold) 0%, var(--gold-light) 40%, var(--gold) 80%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: goldShine 4s linear infinite;
+@keyframes logoGlow {
+    0%, 100% {
+        filter: drop-shadow(0 10px 40px rgba(212, 175, 55, 0.3)) contrast(1.1) saturate(1.2);
+    }
+    50% {
+        filter: drop-shadow(0 10px 50px rgba(212, 175, 55, 0.5)) contrast(1.15) saturate(1.3);
+    }
 }
 
-@keyframes goldShine {
-    to { background-position: -200% 0; }
+@media (max-width: 768px) {
+    .hero-logo {
+        max-width: 350px;
+    }
 }
 
 .hero-subtitle {
@@ -372,6 +357,8 @@ section {
     padding: 100px 20px;
     position: relative;
     z-index: 10;
+    background: var(--opaleon-bg);
+    margin: 0;
 }
 
 .container {
@@ -402,7 +389,7 @@ section {
 
 /* === COMPANIES SECTION === */
 .companies-section {
-    background: linear-gradient(180deg, transparent, rgba(15, 76, 129, 0.05), transparent);
+    background: var(--opaleon-bg);
 }
 
 .company-showcase {
@@ -575,6 +562,18 @@ section {
 }
 
 .broker-accent {
+    background: radial-gradient(circle, var(--opal-teal), transparent);
+}
+
+.heloc-accent {
+    background: radial-gradient(circle, var(--opal-cyan), transparent);
+}
+
+.jetdocs-accent {
+    background: radial-gradient(circle, var(--opal-pink), transparent);
+}
+
+.streamliner-accent {
     background: radial-gradient(circle, var(--opal-teal), transparent);
 }
 
@@ -819,19 +818,17 @@ section {
 .footer-brand {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     margin-bottom: 16px;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: var(--gold);
 }
 
-.opal-gem-footer {
-    width: 28px;
-    height: 28px;
-    background: conic-gradient(from 0deg, var(--opal-blue), var(--opal-teal), var(--opal-cyan), var(--opal-orange), var(--opal-blue));
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+.footer-logo {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.2)) contrast(1.1) saturate(1.2);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .footer-copyright {
