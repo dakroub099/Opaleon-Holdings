@@ -215,6 +215,9 @@ body {
     display: flex;
     justify-content: center;
     animation: logoFadeIn 1s ease-out;
+    border: none;
+    outline: none;
+    background: transparent;
 }
 
 @keyframes logoFadeIn {
@@ -237,8 +240,9 @@ body {
     animation: logoGlow 3s ease-in-out infinite;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
-    mix-blend-mode: lighten;
     background: transparent;
+    border: none;
+    outline: none;
 }
 
 @keyframes logoGlow {
