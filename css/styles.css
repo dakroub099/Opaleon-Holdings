@@ -215,14 +215,6 @@ body {
     display: flex;
     justify-content: center;
     animation: logoFadeIn 1s ease-out;
-    border: none;
-    outline: none;
-    background: transparent;
-    overflow: hidden;
-    /* Clip edges to hide border artifacts */
-    padding: 2px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 @keyframes logoFadeIn {
@@ -245,12 +237,6 @@ body {
     animation: logoGlow 3s ease-in-out infinite;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
-    background: transparent;
-    border: none;
-    outline: none;
-    /* Scale slightly and crop edges to hide border artifacts */
-    transform: scale(1.02);
-    margin: -1%;
 }
 
 @keyframes logoGlow {
