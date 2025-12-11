@@ -318,13 +318,14 @@ body {
 
 .btn-secondary {
     background: transparent;
-    color: var(--gold-light);
+    color: var(--gold);
     border-color: var(--gold-dim);
 }
 
 .btn-secondary:hover {
     background: rgba(212, 175, 55, 0.1);
     border-color: var(--gold);
+    color: var(--gold-light);
 }
 
 /* === SCROLL INDICATOR === */
@@ -508,6 +509,15 @@ section {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.link-separator {
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    padding: 0 4px;
 }
 
 .company-link {
