@@ -1,34 +1,35 @@
 /* === CSS VARIABLES === */
 :root {
-    /* Unified Background Gradient - Rich Blue inspired by Opal */
-    --opaleon-bg: radial-gradient(ellipse 1400px 900px at 50% 0%, #1a3a5c 0%, #0d1f3a 40%, #050d1a 100%);
+    /* Unified Background Gradient - Rich Opal Blue tones */
+    --opaleon-bg: radial-gradient(ellipse 1400px 900px at 50% 0%, #0f3347 0%, #081e2b 40%, #040d14 100%);
     
-    /* Deep Blue & Gold Base */
-    --ink: #050d1a;
-    --ink-light: #0d1f3a;
-    --ink-glass: rgba(5, 13, 26, 0.85);
+    /* Deep Opal Blue & Gold Base */
+    --ink: #040d14;
+    --ink-light: #081e2b;
+    --ink-glass: rgba(4, 13, 20, 0.85);
     
     /* Gold Accents - Vibrant matching logo frame */
     --gold: #e6b422;
     --gold-light: #f9d771;
     --gold-dim: rgba(230, 180, 34, 0.2);
     
-    /* Opal Spectrum - Enhanced Blues */
-    --opal-blue: #2563eb;
-    --opal-teal: #0891b2;
-    --opal-cyan: #06b6d4;
-    --opal-orange: #ff6b35;
-    --opal-pink: #ff0084;
+    /* Opal Spectrum - Matched to logo opal colors */
+    --opal-blue: #1a6e8e;
+    --opal-teal: #0d8a9a;
+    --opal-cyan: #0fa4b8;
+    --opal-deep: #0c4a5e;
+    --opal-light: #3db4c9;
+    --opal-orange: #e07830;
     
     /* Text Colors */
     --text-primary: #f0f4f8;
-    --text-secondary: #b8c5d6;
-    --text-muted: #8497b0;
+    --text-secondary: #b8cad6;
+    --text-muted: #7a9aad;
     
     /* UI Elements */
-    --card-bg: rgba(13, 31, 58, 0.7);
-    --card-border: rgba(230, 180, 34, 0.25);
-    --glass: rgba(26, 58, 92, 0.6);
+    --card-bg: rgba(12, 40, 55, 0.7);
+    --card-border: rgba(230, 180, 34, 0.2);
+    --glass: rgba(15, 51, 71, 0.6);
     
     /* Layout */
     --radius: 16px;
@@ -83,8 +84,8 @@ body {
     opacity: 0.4;
     will-change: transform;
     background: 
-        radial-gradient(circle 600px at 20% 20%, rgba(37, 99, 235, 0.2), transparent),
-        radial-gradient(circle 500px at 80% 30%, rgba(8, 145, 178, 0.15), transparent),
+        radial-gradient(circle 600px at 20% 20%, rgba(26, 110, 142, 0.25), transparent),
+        radial-gradient(circle 500px at 80% 30%, rgba(13, 138, 154, 0.2), transparent),
         radial-gradient(circle 400px at 50% 70%, rgba(230, 180, 34, 0.1), transparent);
     animation: auraFloat 12s ease-in-out infinite;
 }
@@ -126,7 +127,7 @@ body::after {
     left: 5%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 70%);
+    background: radial-gradient(circle, rgba(26, 110, 142, 0.12), transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -286,16 +287,16 @@ body::after {
     display: block;
     width: 300px;
     height: 300px;
-    filter: drop-shadow(0 10px 40px rgba(230, 180, 34, 0.4)) drop-shadow(0 0 60px rgba(37, 99, 235, 0.3)) contrast(1.1) saturate(1.2);
+    filter: drop-shadow(0 10px 40px rgba(230, 180, 34, 0.4)) drop-shadow(0 0 60px rgba(26, 110, 142, 0.4)) contrast(1.1) saturate(1.2);
     animation: opalGlow 3s ease-in-out infinite, opalFloat 6s ease-in-out infinite;
 }
 
 @keyframes opalGlow {
     0%, 100% {
-        filter: drop-shadow(0 10px 40px rgba(230, 180, 34, 0.4)) drop-shadow(0 0 60px rgba(37, 99, 235, 0.3)) contrast(1.1) saturate(1.2);
+        filter: drop-shadow(0 10px 40px rgba(230, 180, 34, 0.4)) drop-shadow(0 0 60px rgba(26, 110, 142, 0.4)) contrast(1.1) saturate(1.2);
     }
     50% {
-        filter: drop-shadow(0 10px 60px rgba(230, 180, 34, 0.6)) drop-shadow(0 0 80px rgba(37, 99, 235, 0.4)) contrast(1.15) saturate(1.3);
+        filter: drop-shadow(0 10px 60px rgba(230, 180, 34, 0.6)) drop-shadow(0 0 80px rgba(13, 138, 154, 0.5)) contrast(1.15) saturate(1.3);
     }
 }
 
@@ -580,7 +581,7 @@ section {
 }
 
 .feature-card {
-    background: linear-gradient(135deg, var(--card-bg), rgba(37, 99, 235, 0.05));
+    background: linear-gradient(135deg, var(--card-bg), rgba(26, 110, 142, 0.08));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     padding: 24px;
@@ -802,7 +803,7 @@ section {
 }
 
 .about-card {
-    background: linear-gradient(135deg, var(--card-bg), rgba(37, 99, 235, 0.05));
+    background: linear-gradient(135deg, var(--card-bg), rgba(26, 110, 142, 0.08));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     padding: 32px;
@@ -818,7 +819,7 @@ section {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--opal-blue), var(--gold));
+    background: linear-gradient(90deg, var(--gold), var(--opal-teal), var(--gold));
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -889,7 +890,7 @@ section {
 .metric-card {
     text-align: center;
     padding: 40px 24px;
-    background: linear-gradient(135deg, var(--glass), rgba(37, 99, 235, 0.1));
+    background: linear-gradient(135deg, var(--glass), rgba(26, 110, 142, 0.12));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     backdrop-filter: blur(10px);
@@ -1028,7 +1029,7 @@ section {
 
 /* === CONTACT SECTION === */
 .contact-card {
-    background: linear-gradient(135deg, var(--card-bg), rgba(37, 99, 235, 0.08));
+    background: linear-gradient(135deg, var(--card-bg), rgba(26, 110, 142, 0.1));
     border: 2px solid transparent;
     background-clip: padding-box;
     border-radius: var(--radius);
@@ -1042,7 +1043,7 @@ section {
     content: '';
     position: absolute;
     inset: -2px;
-    background: linear-gradient(135deg, var(--gold), var(--opal-blue), var(--gold));
+    background: linear-gradient(135deg, var(--gold), var(--opal-teal), var(--gold));
     border-radius: calc(var(--radius) + 2px);
     z-index: -1;
     opacity: 0.6;
@@ -1092,7 +1093,7 @@ section {
 /* === FOOTER === */
 .footer {
     padding: 50px 20px;
-    background: linear-gradient(180deg, rgba(5, 13, 26, 0.6), rgba(5, 13, 26, 0.95));
+    background: linear-gradient(180deg, rgba(4, 13, 20, 0.6), rgba(4, 13, 20, 0.95));
     border-top: 1px solid var(--card-border);
     position: relative;
 }
