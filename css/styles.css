@@ -80,16 +80,67 @@ body {
     height: 100vh;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.2;
+    opacity: 0.4;
     will-change: transform;
     background: 
-        radial-gradient(circle 400px at 30% 20%, rgba(15, 76, 129, 0.15), transparent),
-        radial-gradient(circle 300px at 70% 40%, rgba(27, 153, 139, 0.15), transparent);
+        radial-gradient(circle 600px at 20% 20%, rgba(37, 99, 235, 0.2), transparent),
+        radial-gradient(circle 500px at 80% 30%, rgba(8, 145, 178, 0.15), transparent),
+        radial-gradient(circle 400px at 50% 70%, rgba(230, 180, 34, 0.1), transparent);
+    animation: auraFloat 12s ease-in-out infinite;
 }
 
-@keyframes auraShift {
-    0%, 100% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(-10px, -5px, 0); }
+@keyframes auraFloat {
+    0%, 100% { 
+        transform: translate3d(0, 0, 0) scale(1); 
+        opacity: 0.4;
+    }
+    33% { 
+        transform: translate3d(-20px, 10px, 0) scale(1.02); 
+        opacity: 0.5;
+    }
+    66% { 
+        transform: translate3d(15px, -15px, 0) scale(0.98); 
+        opacity: 0.35;
+    }
+}
+
+/* Decorative floating orbs */
+body::before {
+    content: '';
+    position: fixed;
+    top: 15%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(230, 180, 34, 0.08), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatOrb1 8s ease-in-out infinite;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 20%;
+    left: 5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatOrb2 10s ease-in-out infinite;
+}
+
+@keyframes floatOrb1 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@keyframes floatOrb2 {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(20px) translateX(15px); }
 }
 
 /* === NAVIGATION === */
@@ -235,32 +286,44 @@ body {
     display: block;
     width: 300px;
     height: 300px;
-    filter: drop-shadow(0 10px 40px rgba(212, 175, 55, 0.3)) contrast(1.1) saturate(1.2);
-    animation: opalGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 10px 40px rgba(230, 180, 34, 0.4)) drop-shadow(0 0 60px rgba(37, 99, 235, 0.3)) contrast(1.1) saturate(1.2);
+    animation: opalGlow 3s ease-in-out infinite, opalFloat 6s ease-in-out infinite;
 }
 
 @keyframes opalGlow {
     0%, 100% {
-        filter: drop-shadow(0 10px 40px rgba(212, 175, 55, 0.3)) contrast(1.1) saturate(1.2);
+        filter: drop-shadow(0 10px 40px rgba(230, 180, 34, 0.4)) drop-shadow(0 0 60px rgba(37, 99, 235, 0.3)) contrast(1.1) saturate(1.2);
     }
     50% {
-        filter: drop-shadow(0 10px 50px rgba(212, 175, 55, 0.5)) contrast(1.15) saturate(1.3);
+        filter: drop-shadow(0 10px 60px rgba(230, 180, 34, 0.6)) drop-shadow(0 0 80px rgba(37, 99, 235, 0.4)) contrast(1.15) saturate(1.3);
     }
+}
+
+@keyframes opalFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .hero-title {
     font-family: var(--font-serif);
     font-size: clamp(48px, 7vw, 80px);
     font-weight: 700;
-    letter-spacing: 6px;
+    letter-spacing: 8px;
     text-align: center;
-    line-height: 1.2;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin: 0;
-    filter: drop-shadow(0 4px 16px rgba(230, 180, 34, 0.4));
+    filter: drop-shadow(0 4px 20px rgba(230, 180, 34, 0.5));
+    animation: titleShimmer 4s ease-in-out infinite;
+}
+
+@keyframes titleShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 @media (max-width: 768px) {
@@ -309,24 +372,56 @@ body {
 .btn-primary {
     background: linear-gradient(135deg, var(--gold), var(--gold-light));
     color: var(--ink);
-    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 8px 24px rgba(230, 180, 34, 0.35), 0 0 20px rgba(230, 180, 34, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(230, 180, 34, 0.5), 0 0 30px rgba(230, 180, 34, 0.25);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--gold);
     border-color: var(--gold-dim);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .btn-secondary:hover {
-    background: rgba(212, 175, 55, 0.1);
     border-color: var(--gold);
-    color: var(--gold-light);
+    color: var(--ink);
+}
+
+.btn-secondary:hover::before {
+    opacity: 1;
 }
 
 /* === SCROLL INDICATOR === */
@@ -395,8 +490,22 @@ section {
     font-family: var(--font-serif);
     font-size: clamp(32px, 4vw, 48px);
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+}
+
+.section-header .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 2px;
 }
 
 .section-description {
@@ -471,10 +580,17 @@ section {
 }
 
 .feature-card {
-    background: var(--card-bg);
+    background: linear-gradient(135deg, var(--card-bg), rgba(37, 99, 235, 0.05));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
-    padding: 20px;
+    padding: 24px;
+    transition: all 0.3s var(--ease-out);
+}
+
+.feature-card:hover {
+    border-color: var(--gold-dim);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .feature-card h4 {
@@ -659,9 +775,22 @@ section {
 }
 
 .company-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-    margin: 60px 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), var(--gold), var(--gold-dim), transparent);
+    margin: 80px 0;
+    position: relative;
+}
+
+.company-divider::before {
+    content: '◆';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--gold);
+    font-size: 12px;
+    background: var(--ink);
+    padding: 0 16px;
 }
 
 /* === ABOUT SECTION === */
@@ -673,33 +802,50 @@ section {
 }
 
 .about-card {
-    background: var(--card-bg);
+    background: linear-gradient(135deg, var(--card-bg), rgba(37, 99, 235, 0.05));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     padding: 32px;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s var(--ease-out);
+    transition: all 0.4s var(--ease-out);
 }
 
 .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--opal-blue), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-card::after {
     content: '';
     position: absolute;
     top: -50%;
     right: -50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent);
+    background: radial-gradient(circle, rgba(230, 180, 34, 0.15), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .about-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
     border-color: var(--gold-dim);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(230, 180, 34, 0.1);
 }
 
 .about-card:hover::before {
+    opacity: 1;
+}
+
+.about-card:hover::after {
     opacity: 1;
 }
 
@@ -742,19 +888,42 @@ section {
 
 .metric-card {
     text-align: center;
-    padding: 32px 20px;
-    background: var(--glass);
+    padding: 40px 24px;
+    background: linear-gradient(135deg, var(--glass), rgba(37, 99, 235, 0.1));
     border: 1px solid var(--card-border);
     border-radius: var(--radius);
     backdrop-filter: blur(10px);
+    transition: all 0.3s var(--ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(230, 180, 34, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-dim);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(230, 180, 34, 0.1);
+}
+
+.metric-card:hover::before {
+    opacity: 1;
 }
 
 .metric-number {
     font-family: var(--font-serif);
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 700;
     color: var(--gold);
     margin-bottom: 8px;
+    text-shadow: 0 0 30px rgba(230, 180, 34, 0.3);
 }
 
 .metric-label {
@@ -784,8 +953,16 @@ section {
     top: 24px;
     left: 10%;
     right: 10%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--opal-blue), var(--gold), var(--gold-dim));
+    background-size: 200% 100%;
+    animation: lineGlow 4s ease-in-out infinite;
+    border-radius: 2px;
+}
+
+@keyframes lineGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .timeline-item {
@@ -795,20 +972,40 @@ section {
 }
 
 .timeline-dot {
-    width: 16px;
-    height: 16px;
-    background: var(--gold);
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
     border: 3px solid var(--ink);
     border-radius: 50%;
     margin: 0 auto 20px;
     position: relative;
     z-index: 2;
     transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(230, 180, 34, 0.4);
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border: 2px solid var(--gold-dim);
+    border-radius: 50%;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0; }
 }
 
 .timeline-item:hover .timeline-dot {
-    transform: scale(1.5);
-    box-shadow: 0 0 20px var(--gold);
+    transform: scale(1.4);
+    box-shadow: 0 0 30px var(--gold);
+}
+
+.timeline-item:hover .timeline-dot::before {
+    animation: none;
+    opacity: 0;
 }
 
 .timeline-content h4 {
@@ -831,12 +1028,30 @@ section {
 
 /* === CONTACT SECTION === */
 .contact-card {
-    background: linear-gradient(135deg, var(--card-bg), rgba(212, 175, 55, 0.05));
-    border: 1px solid var(--gold-dim);
+    background: linear-gradient(135deg, var(--card-bg), rgba(37, 99, 235, 0.08));
+    border: 2px solid transparent;
+    background-clip: padding-box;
     border-radius: var(--radius);
-    padding: 60px 40px;
+    padding: 70px 50px;
     text-align: center;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(230, 180, 34, 0.1);
+    position: relative;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--gold), var(--opal-blue), var(--gold));
+    border-radius: calc(var(--radius) + 2px);
+    z-index: -1;
+    opacity: 0.6;
+    animation: borderGlow 4s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
 }
 
 .contact-card h2 {
@@ -876,9 +1091,21 @@ section {
 
 /* === FOOTER === */
 .footer {
-    padding: 40px 20px;
-    background: linear-gradient(180deg, rgba(10, 15, 31, 0.6), rgba(10, 15, 31, 0.9));
+    padding: 50px 20px;
+    background: linear-gradient(180deg, rgba(5, 13, 26, 0.6), rgba(5, 13, 26, 0.95));
     border-top: 1px solid var(--card-border);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .footer-content {
@@ -909,8 +1136,8 @@ section {
 /* === ANIMATIONS === */
 [data-animate] {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s var(--ease-out);
     will-change: opacity, transform;
 }
 
@@ -919,6 +1146,24 @@ section {
     transform: translateY(0);
     will-change: auto;
 }
+
+.company-showcase[data-animate] {
+    transform: translateY(60px);
+}
+
+.company-showcase[data-animate].in-view {
+    transform: translateY(0);
+}
+
+.about-card[data-animate]:nth-child(1) { transition-delay: 0.1s; }
+.about-card[data-animate]:nth-child(2) { transition-delay: 0.2s; }
+.about-card[data-animate]:nth-child(3) { transition-delay: 0.3s; }
+.about-card[data-animate]:nth-child(4) { transition-delay: 0.4s; }
+
+.metric-card[data-animate]:nth-child(1) { transition-delay: 0.1s; }
+.metric-card[data-animate]:nth-child(2) { transition-delay: 0.2s; }
+.metric-card[data-animate]:nth-child(3) { transition-delay: 0.3s; }
+.metric-card[data-animate]:nth-child(4) { transition-delay: 0.4s; }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
