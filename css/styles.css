@@ -527,7 +527,7 @@ section {
     padding: 10px 20px;
     border: 1px solid var(--gold-dim);
     border-radius: 999px;
-    color: var(--gold-light);
+    color: var(--gold);
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
@@ -538,6 +538,7 @@ section {
     background: rgba(212, 175, 55, 0.1);
     border-color: var(--gold);
     transform: translateX(4px);
+    color: var(--gold);
 }
 
 .company-link.secondary {
