@@ -440,7 +440,7 @@ section {
     padding: 6px 14px;
     border-radius: 999px;
     border: 1px solid var(--gold-dim);
-    color: var(--gold-light);
+    color: var(--gold);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -480,7 +480,7 @@ section {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 12px;
-    color: var(--gold-light);
+    color: var(--gold);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -592,6 +592,12 @@ section {
     object-fit: cover;
     object-position: top;
     transition: transform 0.3s var(--ease-out);
+}
+
+.streamliner-visual .company-preview {
+    object-fit: contain;
+    object-position: center;
+    padding: 40px;
 }
 
 .visual-card:hover .company-preview {
@@ -793,7 +799,7 @@ section {
 .timeline-content h4 {
     font-size: 16px;
     font-weight: 600;
-    color: var(--gold-light);
+    color: var(--gold);
     margin-bottom: 4px;
 }
 
