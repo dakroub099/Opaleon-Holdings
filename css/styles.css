@@ -1,39 +1,39 @@
 /* === CSS VARIABLES === */
 :root {
-    /* Unified Background Gradient */
-    --opaleon-bg: radial-gradient(ellipse 1400px 900px at 50% 0%, #11203d 0%, #09101f 40%, #070c17 100%);
+    /* Unified Background Gradient - Rich Blue inspired by Opal */
+    --opaleon-bg: radial-gradient(ellipse 1400px 900px at 50% 0%, #1a3a5c 0%, #0d1f3a 40%, #050d1a 100%);
     
-    /* Deep Navy & Gold Base */
-    --ink: #0a0f1f;
-    --ink-light: #0d1326;
-    --ink-glass: rgba(10, 15, 31, 0.85);
+    /* Deep Blue & Gold Base */
+    --ink: #050d1a;
+    --ink-light: #0d1f3a;
+    --ink-glass: rgba(5, 13, 26, 0.85);
     
-    /* Gold Accents */
-    --gold: #d4af37;
-    --gold-light: #f5e6a1;
-    --gold-dim: rgba(212, 175, 55, 0.15);
+    /* Gold Accents - Vibrant matching logo frame */
+    --gold: #e6b422;
+    --gold-light: #f9d771;
+    --gold-dim: rgba(230, 180, 34, 0.2);
     
-    /* Opal Spectrum */
-    --opal-blue: #0f4c81;
-    --opal-teal: #1b998b;
-    --opal-cyan: #0091a3;
+    /* Opal Spectrum - Enhanced Blues */
+    --opal-blue: #2563eb;
+    --opal-teal: #0891b2;
+    --opal-cyan: #06b6d4;
     --opal-orange: #ff6b35;
     --opal-pink: #ff0084;
     
     /* Text Colors */
-    --text-primary: #e6eef8;
-    --text-secondary: #aab7cc;
-    --text-muted: #7a8ca5;
+    --text-primary: #f0f4f8;
+    --text-secondary: #b8c5d6;
+    --text-muted: #8497b0;
     
     /* UI Elements */
-    --card-bg: rgba(13, 19, 38, 0.65);
-    --card-border: rgba(212, 175, 55, 0.15);
-    --glass: rgba(15, 22, 41, 0.55);
+    --card-bg: rgba(13, 31, 58, 0.7);
+    --card-border: rgba(230, 180, 34, 0.25);
+    --glass: rgba(26, 58, 92, 0.6);
     
     /* Layout */
     --radius: 16px;
-    --shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
     
     /* Typography */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
